@@ -1,0 +1,16 @@
+.calendar-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: darkgoldenrod;
+    height: 8vh;
+}
+
+.calendar-yymm {
+    background-color: aquamarine;
+    font-size: 5vh;
+}
+
+.calendar-updateInfo {
+    background-color: coral;
+}
