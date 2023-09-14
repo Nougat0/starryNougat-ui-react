@@ -10,6 +10,15 @@ const CalendarPage = () => {
     const [mm, setMonth] = useState(month); //표시할 월
 
     /**
+     * 2자릿수의 월 정보 반환
+     * 0~11을 받아서 1~12로 반환함(주의)
+     */
+    const getFullMonth = (month) => {
+        if (month < 9) return "0" + (month + 1);
+        else return month + 1;
+    };
+
+    /**
      *
      * @param {*} year
      * @param {*} month 1월 = 0, 12월 = 11
@@ -95,7 +104,7 @@ const CalendarPage = () => {
                                 <img src="/logo.png" alt="pokemon go logo" />
                             </div>
                             <div>
-                                {yy}.{mm + 1}
+                                {yy}.{getFullMonth(mm)}
                             </div>
                         </div>
                         <div className="header-season">
