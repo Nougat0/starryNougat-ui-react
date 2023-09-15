@@ -131,10 +131,11 @@ https://inpa.tistory.com/entry/CSS-%F0%9F%93%9A-CSS%EC%9A%A9-%EB%B3%80%EC%88%98-
 
 .calendar-day .week .day {
     width: 100%;
-    height: 300px;
+    height: 0;
     border: 0.1px solid white;
-    padding-top: 5px; /*date 위에 선과 분리*/
+    padding-top: 5px; /*date 숫자를 위의 선과 분리*/
     font-weight: 900;
+    padding-bottom: 21%;
 }
 
 .day-date {
@@ -166,4 +167,48 @@ https://inpa.tistory.com/entry/CSS-%F0%9F%93%9A-CSS%EC%9A%A9-%EB%B3%80%EC%88%98-
 
 .symbol-description {
     background-color: gray;
+    opacity: 0.7;
+    height: 30px;
+    line-height: 30px;
+}
+
+.week {
+    position: relative; /*레이드 div 띄우기 위해서 설정*/
+}
+
+/* 레이드 관련 CSS */
+.raid-event {
+    /*이 부분 수정해서 위치 조정*/
+    font-size: 3vh;
+    opacity: 0.7;
+}
+.raid-event:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+/*메가레이드*/
+.raid-event.mega {
+    background-color: brown;
+}
+/*전설레이드*/
+.raid-event.legend {
+    background-color: royalblue;
+}
+
+/*레이드 컨테이너 공통*/
+.raid-container {
+    width: 100%;
+
+    /*레이드 줄의 상세위치 설정용*/
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: absolute;
+}
+.raid-container.mega-raid-event {
+    bottom: 12%; /*레이드 줄의 상세위치*/
+}
+.raid-container.legend-raid-event {
+    bottom: 2%; /*레이드 줄의 상세위치*/
 }

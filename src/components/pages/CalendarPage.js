@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./CalendarPage.css";
 import CalendarDay from "./CalendarPage/CalendarDay";
+import RaidContainer from "./CalendarEvents/RaidContainer";
 
 const CalendarPage = () => {
     const today = new Date();
@@ -96,7 +97,7 @@ const CalendarPage = () => {
                 </button>
             </div>
             <div className="calendar container">
-                <div className="calendar-title">캘린더 페이지입니다</div>
+                <div className="calendar-title">⭕</div>
                 <div className="calendar">
                     <div className="calendar-header">
                         <div className="header-yymm">
@@ -142,7 +143,7 @@ const CalendarPage = () => {
                                 const weekNum = thisMonth.length;
                                 return (
                                     <div
-                                        className={`week week-${weekIndex}`}
+                                        className={`week week-${weekIndex + 1}`}
                                         key={weekIndex}
                                     >
                                         {week.map((day, dayIndex) => {
@@ -176,17 +177,11 @@ const CalendarPage = () => {
                                                 />
                                             );
                                         })}
+                                        <RaidContainer raidType={"legend"} />
+                                        <RaidContainer raidType={"mega"} />
                                     </div>
                                 );
                             })}
-                            {/* 월별 날짜 들어가는 곳 (연산필요) */}
-                            {/* <CalendarDay day={1} />
-                        <div className="day">1</div>
-                        <div className="day">1</div>
-                        <div className="day">1</div>
-                        <div className="day">1</div>
-                        <div className="day">1</div>
-                        <div className="day">1</div> */}
                         </div>
                     </div>
                     <div className="calendar-footer">
