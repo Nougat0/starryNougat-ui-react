@@ -153,6 +153,13 @@ https://inpa.tistory.com/entry/CSS-%F0%9F%93%9A-CSS%EC%9A%A9-%EB%B3%80%EC%88%98-
     display: flex;
     align-content: flex-start;
 }
+.day-body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
 
 .day-header:nth-child(1) {
     flex-grow: 1;
@@ -211,4 +218,68 @@ https://inpa.tistory.com/entry/CSS-%F0%9F%93%9A-CSS%EC%9A%A9-%EB%B3%80%EC%88%98-
 }
 .raid-container.legend-raid-event {
     bottom: 2%; /*레이드 줄의 상세위치*/
+}
+
+/*아워 이벤트*/
+.hour-title {
+    width: 100%;
+    background-color: grey;
+    font-size: 2.5vh;
+    /*임의로 높이 줌*/
+    line-height: 30px;
+    height: 30px;
+    border-radius: 30px;
+}
+.hour-container {
+    position: absolute;
+    top: -90px;
+}
+
+.hour-container,
+.hour-header {
+    width: 93%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.hour-header-info div {
+    font-size: 1.7vh;
+}
+.hour-header-info {
+    text-align: left !important; /*App.css에 가운데로 정렬되게 해놨음*/
+    width: 100%;
+    position: relative;
+    top: 3px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: baseline;
+}
+.hour-header-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+.hour-header {
+    margin-left: 10px;
+    margin-right: 10px;
+    position: relative;
+}
+.hour-pm {
+    /* position: absolute;
+    left: 100px; */
+    /* float: right; */
+    width: auto;
+    height: auto;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: right; */
+    margin-left: auto;
+    margin-bottom: auto;
+    /* position: absolute; */
+    /* bottom: 8px; */
+    /* left: 80px; */
+}
+.hour-pm img {
+    width: 130px;
 }
