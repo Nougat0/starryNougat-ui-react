@@ -230,10 +230,6 @@ https://inpa.tistory.com/entry/CSS-%F0%9F%93%9A-CSS%EC%9A%A9-%EB%B3%80%EC%88%98-
     height: 30px;
     border-radius: 30px;
 }
-.hour-container {
-    position: absolute;
-    top: -90px;
-}
 
 .hour-container,
 .hour-header {
@@ -248,7 +244,6 @@ https://inpa.tistory.com/entry/CSS-%F0%9F%93%9A-CSS%EC%9A%A9-%EB%B3%80%EC%88%98-
 .hour-header-info {
     text-align: left !important; /*App.css에 가운데로 정렬되게 해놨음*/
     width: 100%;
-    position: relative;
     top: 3px;
 
     display: flex;
@@ -263,23 +258,17 @@ https://inpa.tistory.com/entry/CSS-%F0%9F%93%9A-CSS%EC%9A%A9-%EB%B3%80%EC%88%98-
 .hour-header {
     margin-left: 10px;
     margin-right: 10px;
-    position: relative;
 }
 .hour-pm {
-    /* position: absolute;
-    left: 100px; */
-    /* float: right; */
+    position: relative;
     width: auto;
     height: auto;
-    /* display: flex;
-    flex-direction: column;
-    justify-content: right; */
     margin-left: auto;
     margin-bottom: auto;
-    /* position: absolute; */
-    /* bottom: 8px; */
-    /* left: 80px; */
 }
 .hour-pm img {
     width: 130px;
+    position: absolute;
+    bottom: -40px;
+    left: -90px;
 }
