@@ -89,7 +89,7 @@ https://inpa.tistory.com/entry/CSS-%F0%9F%93%9A-CSS%EC%9A%A9-%EB%B3%80%EC%88%98-
 }
 
 .calendar-body {
-    margin-top: 10px;
+    margin-top: 10px; /*yymm 과 weekday 사이 간격*/
     color: white;
 
     background-color: black;
@@ -131,10 +131,12 @@ https://inpa.tistory.com/entry/CSS-%F0%9F%93%9A-CSS%EC%9A%A9-%EB%B3%80%EC%88%98-
 
 .calendar-day .week .day {
     width: 100%;
-    height: 0;
     border: 0.1px solid white;
     padding-top: 5px; /*date 숫자를 위의 선과 분리*/
     font-weight: 900;
+
+    /*가로세로 비율 설정*/
+    height: 0;
     padding-bottom: 21%;
 }
 
@@ -145,7 +147,7 @@ https://inpa.tistory.com/entry/CSS-%F0%9F%93%9A-CSS%EC%9A%A9-%EB%B3%80%EC%88%98-
     width: 5vh;
 }
 .day-event {
-    height: 5vh;
+    height: auto;
     background-color: chocolate;
 }
 
@@ -180,31 +182,73 @@ https://inpa.tistory.com/entry/CSS-%F0%9F%93%9A-CSS%EC%9A%A9-%EB%B3%80%EC%88%98-
 }
 
 .week {
-    position: relative; /*레이드 div 띄우기 위해서 설정*/
+    position: relative; /*레이드 div 바닥에서 띄우기 위해서 설정*/
 }
 
 /* 레이드 관련 CSS */
-.raid-event {
-    /*이 부분 수정해서 위치 조정*/
+.raid-content {
     font-size: 3vh;
+    /*레이드 정보 정렬 방향 설정*/
+    display: flex;
+    z-index: 1; /*raid-background 보다 앞으로 오도록 함*/
+
+    /*justifyContent는 js 파일에서 정의,, CSS 파일에서 정의방법 알아내어 변경예정*/
+}
+.relative {
+    position: relative;
+    width: 70px; /*이미지 조정을 위해 이미지 컨테이너에 부피감 주기*/
+}
+.img-container {
+    display: grid; /*내부 이미지 세로 가운데로 (1)*/
+    margin: 1px;
+}
+
+/*상징표시 이미지*/
+.raid-content img[alt="symbol"] {
+    height: 25px;
+    display: block;
+
+    margin: auto; /*내부 이미지 세로 가운데로 (2)*/
+}
+
+/*포켓몬 이미지*/
+.raid-content img[alt="pm"] {
+    width: 60px;
+    position: absolute;
+    bottom: -10px;
+    /* left right 동일하게 안 주면 flex-direction에 따라 쏠림이 심함*/
+    right: 10px;
+    left: 10px;
+}
+
+.raid {
+    /*레이드 정보 정렬 방향 설정*/
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+.raid-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
     opacity: 0.7;
 }
-.raid-event:hover {
+.raid-background:hover {
     opacity: 1;
     cursor: pointer;
 }
-
 /*메가레이드*/
-.raid-event.mega {
+.raid-background.mega {
     background-color: brown;
 }
 /*전설레이드*/
-.raid-event.legend {
+.raid-background.legend {
     background-color: royalblue;
 }
 
 /*레이드 컨테이너 공통*/
-.raid-container {
+.week-raid-container {
     width: 100%;
 
     /*레이드 줄의 상세위치 설정용*/
@@ -213,11 +257,13 @@ https://inpa.tistory.com/entry/CSS-%F0%9F%93%9A-CSS%EC%9A%A9-%EB%B3%80%EC%88%98-
     justify-content: space-between;
     position: absolute;
 }
-.raid-container.mega-raid-event {
-    bottom: 12%; /*레이드 줄의 상세위치*/
+.week-raid-container.mega-raid-content {
+    /* bottom: 11.5%; 레이드 줄의 상세위치 */
+    bottom: 11.5%;
 }
-.raid-container.legend-raid-event {
-    bottom: 2%; /*레이드 줄의 상세위치*/
+.week-raid-container.legend-raid-content {
+    /* bottom: 2%; 레이드 줄의 상세위치 */
+    bottom: 2%;
 }
 
 /*아워 이벤트*/
@@ -225,10 +271,11 @@ https://inpa.tistory.com/entry/CSS-%F0%9F%93%9A-CSS%EC%9A%A9-%EB%B3%80%EC%88%98-
     width: 100%;
     background-color: grey;
     font-size: 2.5vh;
-    /*임의로 높이 줌*/
+    /*임의로 높이 줌 30px*/
     line-height: 30px;
     height: 30px;
     border-radius: 30px;
+    padding: 3px;
 }
 
 .hour-container,
@@ -238,13 +285,20 @@ https://inpa.tistory.com/entry/CSS-%F0%9F%93%9A-CSS%EC%9A%A9-%EB%B3%80%EC%88%98-
     flex-direction: column;
     align-items: center;
 }
-.hour-header-info div {
+.hour-body {
+    width: 93%;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+.hour-header-info div,
+.hour-body-text {
     font-size: 1.7vh;
 }
 .hour-header-info {
-    text-align: left !important; /*App.css에 가운데로 정렬되게 해놨음*/
+    text-align: left;
     width: 100%;
-    top: 3px;
+    /* top: 3px; */
 
     display: flex;
     flex-direction: row;
@@ -255,7 +309,9 @@ https://inpa.tistory.com/entry/CSS-%F0%9F%93%9A-CSS%EC%9A%A9-%EB%B3%80%EC%88%98-
     flex-direction: column;
     justify-content: end;
 }
-.hour-header {
+.hour-header,
+.hour-body {
+    margin-top: 5px;
     margin-left: 10px;
     margin-right: 10px;
 }
@@ -267,8 +323,12 @@ https://inpa.tistory.com/entry/CSS-%F0%9F%93%9A-CSS%EC%9A%A9-%EB%B3%80%EC%88%98-
     margin-bottom: auto;
 }
 .hour-pm img {
-    width: 130px;
+    width: 115px;
     position: absolute;
-    bottom: -40px;
+    bottom: -45px;
     left: -90px;
+}
+.hour-body-text {
+    text-align: left !important;
+    margin-left: 10px;
 }

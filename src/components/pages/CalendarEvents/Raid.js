@@ -2,6 +2,8 @@ import React from "react";
 
 const Raid = ({ index, raidRefs, raidType, raidList }) => {
     const raidKr = raidType === "mega" ? "메가" : "전설";
+    const ref = raidRefs.current[index];
+    const raidCount = raidList.length;
     /**
      * 숫자형식으로 저장한 %값 (% 붙여서 써야 함)
      */
@@ -65,8 +67,6 @@ const Raid = ({ index, raidRefs, raidType, raidList }) => {
         // ref를 사용할 때 DOM이 로딩되지 않았을 때 가져오면 undefined라서 오류 뜸,
         // 이 현상 방지를 위해 if문 추가
         if (document.readyState === "complete") {
-            const ref = raidRefs.current[raidNum];
-
             const boundingClientRect = ref.getBoundingClientRect();
             const width = boundingClientRect.width * 2;
 
@@ -76,8 +76,6 @@ const Raid = ({ index, raidRefs, raidType, raidList }) => {
             //clipPath 에 비율을 사용해야 할 경우
             const remainPercent = (remainWidth / width) * 100;
             const elemPercent = (elemHeight / width) * 100;
-
-            const raidCount = raidList.length;
 
             //레이드가 하나일 경우 clipPath 반환 안 함
             if (raidCount === 1) {
@@ -97,20 +95,88 @@ const Raid = ({ index, raidRefs, raidType, raidList }) => {
             return false;
         }
     };
-    const width = index === 0 ? `${RAID_WIDTH.thu.morning}%` : "";
+    const width = index === 0 ? `${RAID_WIDTH.wed.morning}%` : "";
+
+    const justifyContent = (raidNum) => {
+        if (raidCount === 1) return "center";
+        else {
+            if (raidNum === 0) {
+                return "right";
+            } else if (raidNum === raidCount - 1) {
+                return "left";
+            } else return "center";
+        }
+    };
+
+    const flexDirection = (raidNum) => {
+        if (raidCount === 1) return "row";
+        else {
+            if (raidNum === 0) {
+                return "row-reverse";
+            } else if (raidNum === raidCount - 1) {
+                return "row";
+            } else return "row";
+        }
+    };
+
+    /**
+     * 레이드 순번에 따라 레이드정보 div들 왼/오/중앙 정렬 설정
+     * @param {*} raidNum
+     * @returns
+     */
+    const setMargin = (raidNum) => {
+        const margin = {};
+        if (raidCount === 1) {
+            margin.marginLeft = "auto";
+            margin.marginRight = "auto";
+        } else {
+            if (raidNum === 0) {
+                margin.marginLeft = "auto";
+                margin.marginRight = "20px";
+            } else if (raidNum === raidCount - 1) {
+                margin.marginRight = "auto";
+                margin.marginLeft = "20px";
+            } else {
+                margin.marginLeft = "auto";
+                margin.marginRight = "auto";
+            }
+        }
+        return margin;
+    };
 
     return (
         <div
             key={index}
             ref={(element) => (raidRefs.current[index] = element)}
-            className={`raid-event ${raidType}`}
+            className={`raid ${raidType}`}
             style={{
                 width: width,
-                clipPath: `${makeClipPath(index)}`,
                 flex: `${index !== 0 ? 1 : ""}`,
             }}
         >
-            {raidKr} 레이드1
+            <div
+                className={`raid-background ${raidType}`}
+                style={{ width: "100%", clipPath: `${makeClipPath(index)}` }}
+            ></div>
+            <div
+                className={`raid-content ${raidType}`}
+                style={{
+                    justifyContent: `${justifyContent(index)}`,
+                    flexDirection: `${flexDirection(index)}`,
+                    ...setMargin(index),
+                }}
+            >
+                <div className="img-container">
+                    <img src="/symbol/mega_symbol.png" alt="symbol" />
+                </div>
+
+                <div>
+                    {raidKr} {justifyContent(index)}
+                </div>
+                <div className="img-container relative">
+                    <img src="/pm/pm200(1).png" alt="pm" />
+                </div>
+            </div>
         </div>
     );
 };

@@ -6,7 +6,7 @@ import Raid from "./Raid";
  * @param {String} raidType 레이드 종류 구분 문자열 / legend, mega
  * @returns
  */
-const RaidContainer = ({ raidType }) => {
+const WeeklyRaidContainer = ({ raidType }) => {
     const [raids, setRaids] = useState([1, 2, 3]);
     const ref = useRef();
     const raidRefs = useRef([]);
@@ -18,7 +18,10 @@ const RaidContainer = ({ raidType }) => {
     }, [raids]);
 
     return (
-        <div className={`raid-container ${raidType}-raid-event`} ref={ref}>
+        <div
+            className={`week-raid-container ${raidType}-raid-content`}
+            ref={ref}
+        >
             {raids.map((oneRaid, raidNum) => {
                 return (
                     <Raid
@@ -34,4 +37,4 @@ const RaidContainer = ({ raidType }) => {
     );
 };
 
-export default RaidContainer;
+export default WeeklyRaidContainer;

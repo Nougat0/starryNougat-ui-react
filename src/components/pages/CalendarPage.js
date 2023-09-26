@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./CalendarPage.css";
 import CalendarDay from "./CalendarPage/CalendarDay";
-import RaidContainer from "./CalendarEvents/RaidContainer";
+import WeeklyRaidContainer from "./CalendarEvents/RaidContainer";
 
 const CalendarPage = () => {
     const today = new Date();
@@ -177,8 +177,12 @@ const CalendarPage = () => {
                                                 />
                                             );
                                         })}
-                                        <RaidContainer raidType={"legend"} />
-                                        <RaidContainer raidType={"mega"} />
+                                        <WeeklyRaidContainer
+                                            raidType={"legend"}
+                                        />
+                                        <WeeklyRaidContainer
+                                            raidType={"mega"}
+                                        />
                                     </div>
                                 );
                             })}
