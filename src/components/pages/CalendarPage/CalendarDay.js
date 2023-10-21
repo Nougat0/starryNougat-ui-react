@@ -29,7 +29,7 @@ const CalendarDay = ({ day, customFontClass, customDayClass }) => {
                 >
                     {day.getDate()}
                 </div>
-                <div className="day-event">이벤트영역</div>
+                <div className="day-event">...</div>
             </div>
             <div className="day-body">
                 {(day.getDate() === 8 || day.getDate() === 15) && <Hour />}

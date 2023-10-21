@@ -66,7 +66,7 @@ const Raid = ({ index, raidRefs, raidType, raidList }) => {
     const makeClipPath = (raidNum) => {
         // ref를 사용할 때 DOM이 로딩되지 않았을 때 가져오면 undefined라서 오류 뜸,
         // 이 현상 방지를 위해 if문 추가
-        if (document.readyState === "complete") {
+        if (ref) {
             const boundingClientRect = ref.getBoundingClientRect();
             const width = boundingClientRect.width * 2;
 

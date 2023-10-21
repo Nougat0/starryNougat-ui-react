@@ -4,6 +4,7 @@ import BlankPage from "./components/errorpages/BlankPage";
 import { BrowserRouter } from "react-router-dom";
 import CalendarPage from "./components/pages/CalendarPage";
 import CalendarPageMana from "./components/pages/CalendarPageMana";
+import TestPage from "./components/pages/TestPage";
 
 function App() {
     return (
@@ -16,6 +17,7 @@ function App() {
                         path="/calendarMana"
                         element={<CalendarPageMana />}
                     />
+                    <Route path="/test" element={<TestPage />} />
                     <Route path="*" element={<BlankPage />} />
                 </Routes>
                 <footer className="App-footer">©Nougat0</footer>
