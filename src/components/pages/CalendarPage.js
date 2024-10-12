@@ -72,7 +72,7 @@ const CalendarPage = () => {
 
     return (
         <div>
-            <div className="calendar-navbar">
+            <div className="calendar-navbar" style={{height: "100px"}}>
                 <button
                     onClick={() => {
                         //1달 제거된 날짜
