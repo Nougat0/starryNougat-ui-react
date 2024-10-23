@@ -1,19 +1,29 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+html, body {
+    /*footer 화면 최하단에 위치*/
+    height: 100%;
+    /*전체 폰트 지정*/
+    font-family: "Wanted Sans" /*생각보다 2가 너무 구부정해서 좀 고민됨...*/
+}
+
+.page-container {
+    padding: 10vw; /*페이지 내부 여백(컨텐츠 둘레 공간)*/
+}
+.container {
+    /*  가운데정렬을 위해서 사용했었는데 flex 사용해서 
+    없어도 크게 의미가 없는 듯?? 일단 둠*/
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .App {
     text-align: center;
 }
 
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
-}
-
-.App-header {
+.App-header { /*전체 레이아웃 Header*/
     background-color: cornflowerblue;
     height: 8vh;
     display: flex;
@@ -24,7 +34,7 @@
     color: black;
 }
 
-.App-footer {
+.App-footer { /*전체 레이아웃 Footer*/
     height: 8vh;
     width: 100%;
     display: flex;
@@ -33,19 +43,22 @@
     justify-content: center;
     color: black;
     background-color: rgb(228, 228, 228);
-    position: absolute;
-    bottom: 0;
 }
 
 .App-link {
     color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
+/*
+    반응형 웹사이트 만들기
+*/
+@media screen and (min-width: 480px) and (max-width: 767px) { /*모바일 설정 : 480px ~ 767px*/
+    .page-container { 
+        padding: 7vw; /*페이지 내부 여백(컨텐츠 둘레 공간)*/
     }
-    to {
-        transform: rotate(360deg);
+}
+@media screen and (max-width: 479px) { /*작은 모바일 설정 : 479px 이하*/
+    .page-container { 
+        padding: 7vw; /*페이지 내부 여백(컨텐츠 둘레 공간)*/
     }
 }

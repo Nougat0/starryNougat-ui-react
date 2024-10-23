@@ -1,0 +1,256 @@
+/*
+    반응형 웹사이트 만들기
+    flex 계층은 아래와 같다 (flex-container > flex-item)
+    [1] cal-header > cal-title + cal-info
+    [2] cal-title > cal-pogo-image + cal-yymm + cal-season-image
+        cal-info > cal-season-info + cal-calendar-info
+*/
+
+/*******************************************
+    전체 설정
+*******************************************/
+
+/*달력 header + body + footer 간의 간격*/
+/*header는 2줄일 때가 많아서 내부 요소들에 지정, footer는 맨 밑이라 필요없어서 제거*/
+.cal-body {
+    margin-bottom: 1vw;
+}
+
+.cal-footer {
+    width: 100%;
+    background-color: grey;
+}
+
+/*flex 설정 주기*/
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.flex-item {
+    /*background-color: greenyellow;*/
+    border: 1px solid;
+    flex: 1 1 auto; /*grow:1, shrink:1, basis:auto*/
+}
+
+.disabled {
+    color: rgb(75, 75, 75);
+}
+
+/*******************************************
+    cal-header 설정
+*******************************************/
+/*[1] cal-title 캘린더 타이틀 부분*/
+.cal-header > .flex-item {
+    margin-bottom: 1vw;
+}
+.cal-title {
+    /*flex 설정*/
+    width: 60%;
+    flex-grow: 0;
+    /*title 배경설정*/
+    background: linear-gradient(to right, aquamarine 20%, white 80%);
+    height: 6vw;
+    border-radius: 6vw; /*0 50% / 0 100%; 높이만큼 설정하고 싶음*/
+    /*내부 아이템 정렬*/
+    padding-left: 2vw; /*앞 간격지정*/
+    align-items: center; /*세로정렬*/
+}
+.cal-pogo-image {
+    /*flex 설정*/
+    width: 20%
+}
+.cal-pogo-image img { /*이미지 크기 제어*/
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+}
+.cal-yymm {
+    /*flex 설정*/
+    width: 40%;
+    /*연도.월 정보 글자 스타일*/
+    text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;
+    color: rgba(127, 255, 212, 0.918);
+    font-size: 4.5vw;
+    text-align: left;
+}
+.cal-season-image {
+    /*flex 설정*/
+    width: 40%;
+}
+.cal-season-image img { /*이미지 크기 제어*/
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+}
+
+/*[2] cal-info 캘린더 정보 부분
+.cal-info {*/
+    /*flex 설정
+    width: 20%;
+}*/
+/*[2] cal-info 캘린더 정보 부분*/
+.cal-info:first-child:nth-last-child(2) {
+    width: 40%;
+}
+.cal-info:first-child:nth-last-child(1) {
+    width: 20%;
+}
+.cal-info {
+    font-size: 1.3vw;
+}
+.cal-season-info {
+    width: 70%;
+    font-size: 1vw;
+}
+.cal-calendar-info {
+    width: 30%;
+}
+
+/*******************************************
+    cal-body 설정
+*******************************************/
+/*Grid 설정으로 div들 table 처럼 동작*/
+.table { /*요일과 날짜 같이 세로 정렬*/
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+.tbody, .thead {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /*일주일*/
+    gap: 0;
+}
+.tr {
+    display: contents;
+}
+.td { /*전체 칸*/
+    padding: 0.3vw;
+    border: 1px solid;
+    /*text-align: center;*/
+    outline: 1px solid; /*border 겹치게끔 하기*/
+    /*내부 내용물*/
+    /*text
+    font-size: calc(2vmax);*/
+}
+.thead .td { /*요일 칸*/
+    border-bottom: 2px solid;
+    font-size: 2vw;
+}
+.tbody .td { /*날짜(Day) 칸*/
+    min-width: 100% / 7;
+    aspect-ratio: 0.6;
+}
+
+/***************************************
+    cal-day 설정
+***************************************/
+.cal-day-date {
+    font-size: 1.8vw;
+    line-height: 110%; /*글자 가운데 정렬 -- 왜 110%?*/
+    aspect-ratio: 1; /*글자 높이만큼 가로도 똑같이*/
+}
+.cal-day-header { /*배틀정보 있을경우 배경색 칠함*/
+    background-color: orange;
+    height: 2vw;
+    border-radius: 2vw;
+    width: 100%; /*이벤트 정보 있을 시 이벤트 이미지 때문에 줄여야 함*/
+    /*날짜정보 위치*/
+    display: flex;
+    justify-content: space-between;
+    /*align-items: center;*/
+}
+
+/*
+    반응형 웹사이트 만들기
+    flex 계층은 아래와 같다 (flex-container > flex-item)
+    [1] cal-header > cal-title + cal-info
+    [2] cal-title > cal-pogo-image + cal-yymm + cal-season-image
+        cal-info > cal-season-info + cal-calendar-info
+*/
+@media screen and (min-width: 1024px)  { /*PC 설정 : 1024px 이상*/
+    /*바깥 기본 설정 사용*/
+
+}
+@media screen and (min-width: 768px) and (max-width: 1023px) { /*태블릿,패드 설정 : 768px ~ 1023px*/
+    .cal-title {
+        width: 60%;
+    }
+    .cal-info:first-child:nth-last-child(2) {
+        width: 40%;
+    }
+    .cal-info:first-child:nth-last-child(1) {
+        width: 20%;
+    }
+}
+@media screen and (min-width: 480px) and (max-width: 767px) { /*모바일 설정 : 480px ~ 767px*/
+    .cal-title {
+        width: 100%;
+    }
+    .cal-info {
+        width: 100%;
+        /*글자크기 좀 더 크게 설정*/
+        font-size: 2vw;
+    }
+    .cal-season-info {
+        font-size: 1.8vw;
+    }
+    .cal-header {
+        flex-wrap: wrap;
+    }
+    /*[1] cal-title 캘린더 타이틀 부분*/
+    .cal-title {
+        height: 11vw;
+        border-radius: 11vw;
+    }
+    .cal-yymm {
+        font-size: 7.5vw;
+        line-height: 7.5vw;
+    }
+    /*글자크기 재조정 필요*/
+    .thead .td {/*요일*/
+        font-size: 2.5vw;
+    }
+    .cal-day-date {/*날짜*/
+        font-size: 2.3vw;
+    }
+    .cal-day-header {
+        height: 2.5vw;
+        line-height: 100%;
+    }
+}
+@media screen and (max-width: 479px) { /*작은 모바일 설정 : 479px 이하*/
+    .cal-title {
+        width: 100%;
+    }
+    .cal-info {
+        width: 100%;
+        /*글자크기 좀 더 크게 설정*/
+        font-size: 2vw;
+    }
+    .cal-season-info {
+        font-size: 1.8vw;
+    }
+    .cal-header {
+        flex-wrap: wrap;
+    }
+    /*[1] cal-title 캘린더 타이틀 부분*/
+    .cal-title {
+        height: 11vw;
+        border-radius: 11vw;
+    }
+    .cal-yymm {
+        font-size: 7.5vw;
+        line-height: 7.5vw;
+    }
+    /*글자크기 재조정 필요*/
+    .thead .td {/*요일*/
+        font-size: 3vw;
+    }
+    .cal-day-date {/*날짜*/
+        font-size: 2.8vw;
+    }
+    .cal-day-header {
+        height: 3vw;
+        line-height: 100%;
+    }    
+}
