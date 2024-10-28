@@ -1,0 +1,30 @@
+/***************************************
+    cal-week 설정
+***************************************/
+.week {
+    /*incident의 높이 변수로 지정*/
+    --week-item-height: 1.8vw; 
+    /*세로정렬*/
+    flex-direction: column; 
+    /*td 요소들과의 충돌 제거*/
+    position: absolute; 
+    bottom: 0;
+    right: 0;
+    width: 100%;
+}
+.week > div {
+    /*글자속성*/
+    line-height: 175%;
+    font-size: 1vw;
+}
+/*다음주와 닿는 부분 여백 좀 더 주기*/
+.week-raid:last-child {
+    margin-bottom: 0.05vw;
+}
+/*주간이벤트와 레이드 색상 구분*/
+.week-raid > div {
+    background-color: cornflowerblue;
+}
+.week-event {
+    background-color: lightcoral;
+}

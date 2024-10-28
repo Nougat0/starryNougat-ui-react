@@ -1,12 +1,25 @@
 * {
     padding: 0;
     margin: 0;
+    box-sizing: border-box; /*padding이나 margin, border로 width 바뀌지 않도록 함*/
 }
 html, body {
     /*footer 화면 최하단에 위치*/
     height: 100%;
     /*전체 폰트 지정*/
     font-family: "Wanted Sans" /*생각보다 2가 너무 구부정해서 좀 고민됨...*/
+}
+
+/*flex 설정 주기*/
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.flex-container > div {
+    /*background-color: greenyellow;
+    border: 1px solid;*/
+    flex: 1 1 auto; /*grow:1, shrink:1, basis:auto*/
 }
 
 .page-container {

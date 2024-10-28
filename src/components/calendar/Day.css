@@ -1,0 +1,102 @@
+/***************************************
+    cal-day 설정
+***************************************/
+.cal-day-date {
+    font-size: 1.7vw;
+    line-height: 105%; /*글자 가운데 정렬 -- 왜 110%?*/
+    aspect-ratio: 1; /*글자 높이만큼 가로도 똑같이*/
+}
+.cal-day-header { /*배틀정보 있을경우 배경색 칠함*/
+    background-color: rgb(202, 234, 178);
+    height: 1.7vw;
+    border-radius: 1.7vw;
+    width: 100%; /*이벤트 정보 있을 시 이벤트 이미지 때문에 줄여야 함*/
+    /*날짜정보 위치*/
+    display: flex;
+    justify-content: space-between;
+    /*align-items: center;*/
+}
+.cal-day-body {
+    margin-top: 0.3vw;
+}
+.width-60 {
+    width: 60%;
+}
+.today {
+    color:rgb(198, 22, 22)
+    /*border: 2px solid;*/
+}
+/***************************************
+    cal-day-event 설정
+***************************************/
+.cal-day-event-row {
+    flex-direction: row; /*flex 방향지정*/
+    justify-content: space-between; /*정보와 이미지 분리*/
+    align-items: flex-end; /*event-title에 붙이기*/
+}
+.cal-day-event-row > .flex-item {
+    flex-grow: 0;
+}
+.cal-day-event-bref {
+    flex-direction: column; /*flex 방향지정*/
+    font-size: 0.9vw;
+    /*margin: -1vw;*/ /*무슨 이벤트가 있는지만 알 수 있는 레이아웃*/
+    text-align: left;
+    padding-left: 0.3vw; /*dayEvent 연속 시 이미지에 가림 방지*/
+}
+.cal-day-event-pokemon { /*포켓몬 이미지 박스*/
+    width: 70%;
+    /*이미지 위치 조정(오른쪽 아래)*/
+    position: relative;
+    
+}
+.cal-day-event-pokemon img { /*포켓몬 이미지*/
+    position: absolute;   
+}
+.cal-day-event-pokemon img:nth-child(1) { /*포켓몬 이미지*/
+    width: 5.7vw;
+    /*이미지 위치 조정(오른쪽 아래)*/
+    bottom: -0.7vw;
+    right: -1.3vw;
+}
+.cal-day-event-pokemon img:nth-child(2) { /*이로치 표시*/
+    width: 1.5vw;
+    filter: brightness(0%) drop-shadow(0px 0px 2px rgba(0,0,0,0.5)); /*다크테마 시 변경*/
+    /*이미지 위치 조정(오른쪽 아래)*/
+    bottom: 3vw;
+    left: 3.7vw;
+}
+.cal-day-event-title {
+    /*끝이 동그란 네모 만들기*/
+    background-color: rgb(214, 214, 214);
+    height: 2vw;
+    border-radius: 2vw;
+    /*내부 글자 설정*/
+    line-height: 2vw;
+    font-size: 1vw;
+    overflow: hidden; /*넘쳐흐르는 내용물은 숨기기*/
+}
+
+
+@media screen and (min-width: 1024px)  { /*PC 설정 : 1024px 이상*/
+}
+@media screen and (min-width: 768px) and (max-width: 1023px) { /*태블릿,패드 설정 : 768px ~ 1023px*/
+}
+@media screen and (min-width: 480px) and (max-width: 767px) { /*모바일 설정 : 480px ~ 767px*/
+    .cal-day-date {/*날짜*/
+        font-size: 2.3vw;
+    }
+    .cal-day-header {
+        height: 2.5vw;
+        line-height: 100%;
+    }
+}
+@media screen and (max-width: 479px) { /*작은 모바일 설정 : 479px 이하*/
+    .cal-day-date {/*날짜*/
+        font-size: 2.8vw;
+    }
+    .cal-day-header {
+        height: 3vw;
+        line-height: 100%;
+    }   
+}

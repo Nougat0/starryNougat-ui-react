@@ -3,52 +3,36 @@ import "./Calendar.css";
 import pogoLogo from "../../../src/resource/image/pogo-image.png";
 import seasonImageSample from "../../../src/resource/image/pokemongo-season-adventures-abound.png";
 import axiosInstance from "../axios/axiosInstance";
+import Week from "./Week";
+import Day from "./Day";
 
-const Calendar = () => {
+const Calendar = (props) => {
     const today = new Date();
-    const month = today.getMonth();
-    const year = today.getFullYear();
-    const [yy, setYear] = useState(year); //표시할 연도
-    const [mm, setMonth] = useState(month); //표시할 월
+    const month = props.mm; // 0~11
+    const year = props.yy;
     const [currentSeason, setCurrentSeason] = useState(null); //현재 진행되는 시즌
     //현재 진행되는 시즌이 있을 경우에만 보너스 보여주기
     const [seasonBonuses, setSeasonBonuses] = useState([{text:"보너스1"}, {text:"보너스2"}]); //현재 달에 포함된 시즌보너스 정보
     const [updated, setUpdated] = useState(today.toLocaleDateString()); //업데이트 날짜 받아오기
-    const [events, setEvents] = useState([]);
-    
-    /*
-    monthlyInfo = {
-        yymm: 202410, //예시(숫자형태)
-        updated: "", //내부 직접적인 항목의 가장 최근 수정/등록 날짜
-        season: {
-            seasonName: "",
-            seasonNameKr: "",
-            seasonBonuses: [{},{},{},...]
-        },
-        weeklyInfo: [
-            {
-                yymm: 202410,
-                weekNumberOfMonth: 0,
-                dayEventList:{0:{},3:{},4:{}},
-                weekEventList:[{},{},{},...],
-                weekRaidList:[{},{},{},...],
-            },
-            ...
-        ]
-    }
-    */
+    const [events, setEvents] = useState(null);
+
     useEffect(() => {
+        setEvents(() => null);
         //MonthlyInfo 가져오기
-        axiosInstance.get(`/calendar/event?yymm=${yy}${getFullMonth(mm)}`)
+        axiosInstance
+        .get(`/calendar/event?yymm=${year}${getFullMonth(month)}`)
         .then((res) => {
-            console.log(res.data);
             const data = res.data;
+            console.log(data);
             const bonusList = data.season.seasonBonus;
             const eventList = data.weeklyInfo;
+            setCurrentSeason(data.season);
             setSeasonBonuses(bonusList);
             setEvents(eventList);
+        }).catch((error)=>{
+            console.log(error)
         })
-    }, [])
+    }, [month, year])
 
     /**
      * 2자릿수의 월 정보 반환
@@ -103,36 +87,36 @@ const Calendar = () => {
         }
         return weeks;
     };
-    const thisMonth = getCalendarArray(yy, mm);
+    const thisMonth = getCalendarArray(year, month);
 
-    return <>
+    return Boolean(events) && (
         <div className="container">
             <div className="cal-header flex-container">
-                <div className="cal-title flex-container flex-item">
-                    <div className="flex-item cal-pogo-image">
+                <div className="cal-title flex-container ">
+                    <div className=" cal-pogo-image">
                         <img src={pogoLogo} />
                     </div>
-                    <div className="flex-item cal-yymm">
-                        {yy}.{getFullMonth(mm)}
+                    <div className=" cal-yymm">
+                        {year}.{getFullMonth(month)}
                     </div>
-                    <div className="flex-item cal-season-image">
+                    <div className=" cal-season-image">
                         <img src={seasonImageSample}/>
                     </div>
                 </div>
-                <div className="cal-info flex-container flex-item">
+                <div className="cal-info flex-container">
                     {seasonBonuses.length > 0 && //시즌 보너스 없을 경우 보이지 않음
-                        <div className="cal-season-info flex-item">
+                        <div className="cal-season-info">
                             <div>
                                 {seasonBonuses.map((bonus, idx) => 
                                     <div key={idx}>
                                         {/* <i class="fa-light fa-candy-cane"></i> */}
-                                        {bonus.contentKr}
+                                        {bonus.contentKr ?? bonus.content}
                                     </div>
                                 )}    
                             </div>
                         </div>      
                     }
-                    <div className="cal-calendar-info flex-item">
+                    <div className="cal-calendar-info">
                         <div className="developer">©Nougat0</div>
                         <div className="updated">{updated}</div>
                         <div className="version">v1.0</div>
@@ -153,29 +137,20 @@ const Calendar = () => {
                         </div>
                     </div>
                     <div className="tbody">
-                        {thisMonth.map((week, index) => {
-                            const weekRaid = events[index]?.weekRaidList;
-                            const weekEvent = events[index]?.weekEventList;
-                            const dayEventMap = events[index]?.dayEventList;                          
+                        {thisMonth.map((week, index) => { /* week 정보 */
+                            const dayEventMap = events[index].dayEventList;
                             return (
                                 <div className="tr" key={index}>
-                                    {week.map((day, index) => {
-                                        //events[index].getWeekEvent() ~~ //events[index].days[index].getDayEvent()
-                                        //const dayEvent = dayEventMap[index];
+                                    {/*날짜 정보(td)*/}
+                                    {week.map((day, index) => { /* day 정보 */
+                                        const dayEvent = dayEventMap[`${index}`];
                                         return (
                                             <div className="td" key={index}>
-                                                <div className="cal-day">
-                                                    <div className="cal-day-header">
-                                                        <div className={"cal-day-date " + (day.getMonth() != mm ? "disabled" : "")}>{day.getDate()}</div>
-                                                        <div className="cal-day-battle-info"></div>
-                                                    </div>
-                                                    <div className="cal-day-body">
-                                                        <div className="cal-day-event"></div>
-                                                    </div>
-                                                </div>
+                                                <Day day={day} notThisMonth={day.getMonth() !== month} dayEvent={dayEvent} />
                                             </div>
                                         );
                                     })}
+                                    <Week events={events} week={week} index={index} />
                                 </div>
                             );
                         })}
@@ -207,7 +182,7 @@ const Calendar = () => {
             </div>
             <div className="cal-footer">Item 설명란</div>
         </div>
-    </>
+    )
 }
 
 export default Calendar;
