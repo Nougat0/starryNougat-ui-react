@@ -18,6 +18,11 @@
 }
 .cal-day-body {
     margin-top: 0.3vw;
+    flex-direction: column;
+    justify-content: start;
+}
+.cal-day {
+    width: 100%;
 }
 .width-60 {
     width: 60%;
@@ -75,6 +80,9 @@
     line-height: 2vw;
     font-size: 1vw;
     overflow: hidden; /*넘쳐흐르는 내용물은 숨기기*/
+}
+.cal-day-event-bonus {
+    font-size: 1vw;
 }
 
 

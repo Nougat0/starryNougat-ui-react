@@ -15,20 +15,23 @@ const Calendar = (props) => {
     const [seasonBonuses, setSeasonBonuses] = useState([{text:"보너스1"}, {text:"보너스2"}]); //현재 달에 포함된 시즌보너스 정보
     const [updated, setUpdated] = useState(today.toLocaleDateString()); //업데이트 날짜 받아오기
     const [events, setEvents] = useState(null);
+    const [calendar, setCalendar] = useState([]);
 
     useEffect(() => {
-        setEvents(() => null);
         //MonthlyInfo 가져오기
         axiosInstance
         .get(`/calendar/event?yymm=${year}${getFullMonth(month)}`)
         .then((res) => {
             const data = res.data;
             console.log(data);
-            const bonusList = data.season.seasonBonus;
-            const eventList = data.weeklyInfo;
-            setCurrentSeason(data.season);
-            setSeasonBonuses(bonusList);
-            setEvents(eventList);
+            if(data) {
+                const bonusList = data.season?.seasonBonus ?? [];
+                const eventList = data.weeklyInfo;
+                setCurrentSeason(data.season);
+                setSeasonBonuses(bonusList);
+                setEvents(eventList);
+                setCalendar(getCalendarArray(year, month));
+            }
         }).catch((error)=>{
             console.log(error)
         })
@@ -87,7 +90,6 @@ const Calendar = (props) => {
         }
         return weeks;
     };
-    const thisMonth = getCalendarArray(year, month);
 
     return Boolean(events) && (
         <div className="container">
@@ -137,20 +139,21 @@ const Calendar = (props) => {
                         </div>
                     </div>
                     <div className="tbody">
-                        {thisMonth.map((week, index) => { /* week 정보 */
-                            const dayEventMap = events[index].dayEventList;
+                        {calendar.map((week, index) => { /* week 정보 */
+                            const dayEventMap = events[index].dayEventMap;
+                            const weekInfo = events[index];
                             return (
                                 <div className="tr" key={index}>
                                     {/*날짜 정보(td)*/}
                                     {week.map((day, index) => { /* day 정보 */
-                                        const dayEvent = dayEventMap[`${index}`];
+                                        const dayEventList = dayEventMap[`${index}`];
                                         return (
                                             <div className="td" key={index}>
-                                                <Day day={day} notThisMonth={day.getMonth() !== month} dayEvent={dayEvent} />
+                                                <Day day={day} notThisMonth={day.getMonth() !== month} dayEventList={dayEventList} />
                                             </div>
                                         );
                                     })}
-                                    <Week events={events} week={week} index={index} />
+                                    <Week weekRaidList={weekInfo.weekRaidList} weekEventList={weekInfo.weekEventList} weekInfo={weekInfo} week={week} index={index} />
                                 </div>
                             );
                         })}
@@ -169,7 +172,7 @@ const Calendar = (props) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {thisMonth.map((week, index) => {
+                        {calendar.map((week, index) => {
                             console.log(index + " :: " +week)
                             console.log(typeof week)
                             return <tr key={index}>
