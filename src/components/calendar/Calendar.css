@@ -128,7 +128,7 @@
     font-size: 1.7vw;
 }
 .tbody .td { /*날짜(Day) 칸*/
-    min-width: 100% / 7;
+    min-width: calc(100% / 7);
     aspect-ratio: 0.6;
     overflow: visible; /*넘치는 내용물 보이게 하기*/
 }
