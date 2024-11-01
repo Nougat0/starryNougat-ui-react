@@ -24,6 +24,9 @@
 .cal-day {
     width: 100%;
 }
+/***************************************
+    cal-day-battle 설정
+***************************************/
 /*배틀용 정보 표시할 때만 줄 속성*/
 .cal-day-battle {
     background: linear-gradient(to left, rgb(179, 230, 141), 75%, rgb(202, 234, 178, 0));
@@ -34,18 +37,17 @@
 }
 /*배틀용 정보 표시할 header*/
 .cal-day-battle-info {
-    flex-direction: row; /*겹치는 순서를 뒤집으려고 했더니 안되네*/
     align-items: center;
 }
 /*배틀 이미지*/
 .cal-day-battle-info > img {
     /*스티커처럼 표현됨*/
-    filter: drop-shadow(0.1vw 0.1vw 0.1vw rgb(0,0,0,0.5));
+    filter: drop-shadow(0vw 0vw 0.1vw rgb(43, 49, 74));
     width: 2.7vw;
-    margin-left: -1vw;
+    margin-left: -1.2vw;
 }
 /*
-    이거 그냥 battle-start 만 감지해도 되게끔 CSS 바꾸고 싶다
+    battle-start 만 감지해도 되게끔 CSS 적용
     Battle 시작 시 배틀 이미지들 앞으로 쏠리게 레이아웃 변경
 */
 .battle-start {
@@ -57,7 +59,7 @@
 }
 .battle-start > .cal-day-battle-info > img {
     margin-left: 0;
-    margin-right: -1vw;
+    margin-right: -1.2vw;
 }
 
 .width-60 {

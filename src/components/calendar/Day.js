@@ -1,10 +1,10 @@
 import "./Day.css"
-import Tyranitar from "../../resource/image/Tyranitar.png";
-import MegaGroundon from "../../resource/image/Mega_Groundon.png";
-import Shiny from "../../resource/icons/shiny.png";
 import { getFullTime } from "../../modules/CalendarFunction";
-import BattleImages from "../../resource/image/BattleImages";
-import defaultBattleImage from "../../resource/image/Battle_Cup_Fantasy.png";
+import BattleImages from "./BattleImages";
+
+const MegaGroundon = "/resource/image/Pokemon/Mega_Groundon.png";
+const Tyranitar = "/resource/image/Pokemon/Tyranitar.png";
+const Shiny = "/resource/icons/shiny.png";
 
 const Day = (props) => {
     const day = props.day; //new Date() 날짜 객체
@@ -25,10 +25,15 @@ const Day = (props) => {
                 </div>
                 <div className="cal-day-battle-info flex-container">
                     {battleList.map((battle, index) => {
-                        // const url = battle.event.url.substr(11).replace(".png","");
+                        const url = battle.event.url.substr(11).replace(".png","");
+                        console.log(BattleImages[url]);
                         // const Component = BattleImages[url];
                         // return <Component key={index} />
-                        return <img key={index} className={battleStart ? "battle-start-img" : ""} src={defaultBattleImage} />
+                        return <img 
+                            key={index} 
+                            className={battleStart ? "battle-start-img" : ""} 
+                            src={BattleImages[url]}
+                        />
                     })}
                 </div>
             </div>

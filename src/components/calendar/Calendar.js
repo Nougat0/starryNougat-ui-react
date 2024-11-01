@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import "./Calendar.css";
-import pogoLogo from "../../../src/resource/image/pogo-image.png";
-import seasonImageSample from "../../../src/resource/image/pokemongo-season-adventures-abound.png";
 import axiosInstance from "../axios/axiosInstance";
 import Week from "./Week";
 import Day from "./Day";
 import { minusDays, sameDay } from "../../modules/CalendarFunction";
+
+const pogoLogo = "/resource/image/pogo-image.png";
+const seasonImageSample = "/resource/image/pokemongo-season-adventures-abound.png";
 
 const Calendar = (props) => {
     const today = new Date();
