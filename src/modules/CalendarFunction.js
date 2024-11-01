@@ -63,13 +63,38 @@ export const calcPosition = (incident, weekStart, weekEnd) => {
     return [startPosition, endPosition]; 
 }
 /**
- * 날짜추가
+ * 날짜 추가
  * @param {Date} date 
  * @param {int} days 
- * @returns 
+ * @returns {Date} date로부터 days만큼 지난 시간
  */
 export const addDays = (date, days) => {
     const newDate = new Date(date);
     newDate.setDate(newDate.getDate() + days);
     return newDate;
+}
+/**
+ * 날짜 빼기
+ * @param {Date} date 
+ * @param {int} days 
+ * @returns {Date} date로부터 days만큼 이전 시간
+ */
+export const minusDays = (date, days) => {
+    const newDate = new Date(date);
+    newDate.setDate(newDate.getDate() - days);
+    return newDate;
+}
+
+/**
+ * 입력받은 2개의 날짜를 Day 단위로 같은지 비교
+ * @param {Date} date1
+ * @param {Date} date2
+ * @returns {Boolean} 날짜가 같을 경우 True, 다를 경우 False
+ */
+export const sameDay = (date1, date2) => {
+    return (
+        date1.getFullYear() === date2.getFullYear() 
+        && date1.getMonth() === date2.getMonth()
+        && date1.getDate() === date2.getDate()
+    )
 }

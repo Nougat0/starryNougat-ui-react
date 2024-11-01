@@ -5,6 +5,7 @@ import seasonImageSample from "../../../src/resource/image/pokemongo-season-adve
 import axiosInstance from "../axios/axiosInstance";
 import Week from "./Week";
 import Day from "./Day";
+import { minusDays, sameDay } from "../../modules/CalendarFunction";
 
 const Calendar = (props) => {
     const today = new Date();
@@ -142,18 +143,36 @@ const Calendar = (props) => {
                         {calendar.map((week, index) => { /* week 정보 */
                             const dayEventMap = events[index].dayEventMap;
                             const weekInfo = events[index];
+                            const weekEventList = weekInfo.weekEventList.filter(weekEvent => weekEvent.event.eventType !== "GO_Battle");
+                            const weekBattleList = weekInfo.weekEventList.filter(weekEvent => weekEvent.event.eventType === "GO_Battle");
                             return (
                                 <div className="tr" key={index}>
                                     {/*날짜 정보(td)*/}
                                     {week.map((day, index) => { /* day 정보 */
                                         const dayEventList = dayEventMap[`${index}`];
+                                        //시작일이나 종료일이 당일/다음날 6시인 배틀정보들을 필터링해서 Day에 넘겨주기
+                                        const dayBattleList = weekBattleList.filter(battle => 
+                                            (new Date(battle.event.startDt).getHours() !== 0) && sameDay(new Date(battle.event.startDt), day) 
+                                            || (new Date(battle.event.endDt).getHours() !== 0) && (sameDay(minusDays(battle.event.endDt, 1), day))
+                                        );
                                         return (
                                             <div className="td" key={index}>
-                                                <Day day={day} notThisMonth={day.getMonth() !== month} dayEventList={dayEventList} />
+                                                <Day 
+                                                    day={day} 
+                                                    notThisMonth={day.getMonth() !== month} 
+                                                    dayEventList={dayEventList}
+                                                    battleList={dayBattleList}
+                                                />
                                             </div>
                                         );
                                     })}
-                                    <Week weekRaidList={weekInfo.weekRaidList} weekEventList={weekInfo.weekEventList} weekInfo={weekInfo} week={week} index={index} />
+                                    <Week 
+                                        weekRaidList={weekInfo.weekRaidList} 
+                                        weekEventList={weekEventList} 
+                                        weekInfo={weekInfo} 
+                                        week={week} 
+                                        index={index} 
+                                    />
                                 </div>
                             );
                         })}

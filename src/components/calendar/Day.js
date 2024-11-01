@@ -3,22 +3,34 @@ import Tyranitar from "../../resource/image/Tyranitar.png";
 import MegaGroundon from "../../resource/image/Mega_Groundon.png";
 import Shiny from "../../resource/icons/shiny.png";
 import { getFullTime } from "../../modules/CalendarFunction";
+import BattleImages from "../../resource/image/BattleImages";
+import defaultBattleImage from "../../resource/image/Battle_Cup_Fantasy.png";
 
 const Day = (props) => {
     const day = props.day; //new Date() 날짜 객체
     const notThisMonth = props.notThisMonth; //현재 지정된 이번달에 속하지 않은 날짜 여부
     const dayEventList = props.dayEventList; //[{eventSeq, event, pokemonList}]
+    const battleList = props.battleList; //없으면 빈 배열
+    const battleStart = new Date(battleList[0]?.event.endDt).getHours() === 0; //배틀 시작날인지?
     const today = new Date().setHours(0,0,0,0);
     const isToday = today.valueOf() === day.valueOf();
     const shrinkHeader = Boolean(dayEventList);
+    const hasBattle = battleList.length > 0;
 
     return (
         <div className={`cal-day`}>
-            <div className={`cal-day-header ${shrinkHeader ? "width-60" : ""}`}>
+            <div className={`cal-day-header ${hasBattle ? "cal-day-battle" : ""} ${hasBattle && shrinkHeader ? "width-60" : ""} ${hasBattle && battleStart ? "battle-start" : hasBattle && !battleStart ? "battle-end" : ""}`}>
                 <div className={`cal-day-date ${notThisMonth ? "disabled" : ""}  ${isToday ? "today" : ""}`}>
                     {day.getDate()}
                 </div>
-                <div className="cal-day-battle-info"></div>
+                <div className="cal-day-battle-info flex-container">
+                    {battleList.map((battle, index) => {
+                        // const url = battle.event.url.substr(11).replace(".png","");
+                        // const Component = BattleImages[url];
+                        // return <Component key={index} />
+                        return <img key={index} className={battleStart ? "battle-start-img" : ""} src={defaultBattleImage} />
+                    })}
+                </div>
             </div>
             <div className="cal-day-body flex-container">
                 {Boolean(dayEventList) && dayEventList.length > 0 && dayEventList.map((dayEvent, index) => {
