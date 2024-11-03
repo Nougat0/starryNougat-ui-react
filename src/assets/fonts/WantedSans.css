@@ -12,8 +12,8 @@ http://scripts.sil.org/OFL
     font-display: swap;
     font-weight: 1000;
     src: local("Wanted Sans ExtraBlack"), 
-    url("./WantedSans-ExtraBlack.woff2") format("woff2"), 
-    url("./WantedSans-ExtraBlack.ttf") format("ttf");
+    url("/public/resource/fonts/WantedSans/WantedSans-ExtraBlack.woff2") format("woff2"), 
+    url("/public/resource/fonts/WantedSans/WantedSans-ExtraBlack.ttf") format("ttf");
 }
 @font-face {
     font-family: "Wanted Sans";
@@ -21,8 +21,8 @@ http://scripts.sil.org/OFL
     font-display: swap;
     font-weight: 900;
     src: local("Wanted Sans Black"), 
-    url("./WantedSans-Black.woff2") format("woff2"), 
-    url("./WantedSans-Black.ttf") format("ttf");
+    url("/public/resource/fonts/WantedSans/WantedSans-Black.woff2") format("woff2"), 
+    url("/public/resource/fonts/WantedSans/WantedSans-Black.ttf") format("ttf");
 }
 @font-face {
     font-family: "Wanted Sans";
@@ -30,8 +30,8 @@ http://scripts.sil.org/OFL
     font-display: swap;
     font-weight: 800;
     src: local("Wanted Sans ExtraBold"), 
-    url("./WantedSans-ExtraBold.woff2") format("woff2"), 
-    url("./WantedSans-ExtraBold.ttf") format("ttf");
+    url("/public/resource/fonts/WantedSans/WantedSans-ExtraBold.woff2") format("woff2"), 
+    url("/public/resource/fonts/WantedSans/WantedSans-ExtraBold.ttf") format("ttf");
 }
 @font-face {
     font-family: "Wanted Sans";
@@ -39,8 +39,8 @@ http://scripts.sil.org/OFL
     font-display: swap;
     font-weight: 700;
     src: local("Wanted Sans Bold"), 
-    url("./WantedSans-Bold.woff2") format("woff2"), 
-    url("./WantedSans-Bold.ttf") format("ttf");
+    url("/public/resource/fonts/WantedSans/WantedSans-Bold.woff2") format("woff2"), 
+    url("/public/resource/fonts/WantedSans/WantedSans-Bold.ttf") format("ttf");
 }
 @font-face {
     font-family: "Wanted Sans";
@@ -48,8 +48,8 @@ http://scripts.sil.org/OFL
     font-display: swap;
     font-weight: 600;
     src: local("Wanted Sans SemiBold"), 
-    url("./WantedSans-SemiBold.woff2") format("woff2"), 
-    url("./WantedSans-SemiBold.ttf") format("ttf");
+    url("/public/resource/fonts/WantedSans/WantedSans-SemiBold.woff2") format("woff2"), 
+    url("/public/resource/fonts/WantedSans/WantedSans-SemiBold.ttf") format("ttf");
 }
 @font-face {
     font-family: "Wanted Sans";
@@ -57,8 +57,8 @@ http://scripts.sil.org/OFL
     font-display: swap;
     font-weight: 500;
     src: local("Wanted Sans Medium"), 
-    url("./WantedSans-Medium.woff2") format("woff2"), 
-    url("./WantedSans-Medium.ttf") format("ttf");
+    url("/public/resource/fonts/WantedSans/WantedSans-Medium.woff2") format("woff2"), 
+    url("/public/resource/fonts/WantedSans/WantedSans-Medium.ttf") format("ttf");
 }
 @font-face {
     font-family: "Wanted Sans";
@@ -66,6 +66,6 @@ http://scripts.sil.org/OFL
     font-display: swap;
     font-weight: 400;
     src: local("Wanted Sans Regular"), 
-    url("./WantedSans-Regular.woff2") format("woff2"), 
-    url("./WantedSans-Regular.ttf") format("ttf");
+    url("/public/resource/fonts/WantedSans/WantedSans-Regular.woff2") format("woff2"), 
+    url("/public/resource/fonts/WantedSans/WantedSans-Regular.ttf") format("ttf");
 }

@@ -4,7 +4,7 @@ import BlankPage from "./components/errorpages/BlankPage";
 import { BrowserRouter } from "react-router-dom";
 import CalendarPage from "./components/pages/CalendarPage";
 import CalendarPageMana from "./components/pages/CalendarPageMana";
-import "./resource/fonts/WantedSans/WantedSans.css";
+import "../src/assets/fonts/WantedSans.css";
 
 function App() {
     return (

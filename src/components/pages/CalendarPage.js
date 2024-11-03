@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import Calendar from "../calendar/Calendar";
-import navLT from "../../resource/icons/nav-button-lt.png";
-import navGT from "../../resource/icons/nav-button-gt.png";
-import navDoubleLT from "../../resource/icons/nav-button-double-lt.png";
-import navDoubleGT from "../../resource/icons/nav-button-double-gt.png";
 import "./CalendarPage.css";
+
+const navLT = "/resource/icons/nav-button-lt.png"
+const navGT = "/resource/icons/nav-button-gt.png"
+const navDoubleLT = "/resource/icons/nav-button-double-lt.png"
+const navDoubleGT = "/resource/icons/nav-button-double-gt.png"
 
 /**
  * 달력페이지
