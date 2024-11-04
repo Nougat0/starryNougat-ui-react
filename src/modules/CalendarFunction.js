@@ -15,6 +15,19 @@ export const getFullTime = (time) => {
 /*******************************************
  * Week 에서 사용
  *******************************************/
+/**
+ * 
+ */
+export const formatStartEndTime = (event) => {
+    const start = new Date(event.startDt);
+    const end = new Date(event.endDt);
+    let startTime = `${getFullTime(start.getHours())}:${getFullTime(start.getMinutes())}`
+    let endTime = end.getHours() === 0 && end.getMinutes() === 0 
+        ? "23:59" /*자정에 끝나는 이벤트는 종료시각 23:59로 표시해주기*/
+        : `${getFullTime(end.getHours())}:${getFullTime(end.getMinutes())}`
+    return [`${startTime}~`, `~${endTime}`];
+}
+
 
 /**
  * WeekItem의 시작/끝 모양 변동여부 확인용 메소드

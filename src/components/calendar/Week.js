@@ -1,6 +1,4 @@
 import "./Week.css";
-import WeekRaidBox from "./WeekRaidBox";
-import WeekEventBox from "./WeekEventBox";
 import WeekEvent from "./WeekEvent";
 import WeekRaid from "./WeekRaid";
 
@@ -23,19 +21,19 @@ const Week = ({week, weekEventList, weekRaidList}) => {
             {/*이벤트 정보*/}
             {weekEvent.length > 0 &&
                 weekEvent.toReversed().map((oneEvent, index) => 
-                    <WeekEvent className={"week-event"} key={index} oneEvent={oneEvent} weekStart={week[0]}/>
+                    <WeekEvent key={index} className={"week-event"} event={oneEvent.event} weekStart={week[0]}/>
                 )}
             {/*레이드 정보*/}
             {legendRaids.length > 0 && 
                 <div className="week-raid legend-raid">
                     {legendRaids.map((raid, index) => 
-                        <WeekRaid key={index} raid={raid} weekStart={week[0]} isMega={false}/>
+                        <WeekRaid key={index} className={"week-raid-box"} raid={raid} weekStart={week[0]} isMega={false}/>
                     )}
                 </div> }
             {megaRaids.length > 0 &&
                 <div className="week-raid mega-raid">
                     {megaRaids.map((raid, index) => 
-                        <WeekRaid key={index} raid={raid} weekStart={week[0]} isMega={true}/>
+                        <WeekRaid key={index} className={"week-raid-box"} raid={raid} weekStart={week[0]} isMega={true}/>
                     )}
                 </div> }
         </div>

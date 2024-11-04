@@ -1,18 +1,23 @@
-import { addDays, calcPosition, calcWidth, getWeekItemShape } from "../../modules/CalendarFunction";
-import WeekEventBox from "./WeekEventBox";
+import { addDays, calcPosition, calcWidth, formatStartEndTime, getFullTime, getWeekItemShape } from "../../modules/CalendarFunction";
+import WeekItemPosition from "./WeekItemPosition";
+import WeekItemPolygon from "./WeekItemPolygon";
 
-const WeekEvent = ({oneEvent, weekStart}) => {
-    const event = oneEvent.event;
+const WeekEvent = ({event, weekStart, className}) => {
     const weekEnd = addDays(weekStart, 7);
-    const position = calcPosition(event, weekStart, weekEnd);
-    const start = position[0];
-    const end = position[1];
+    /*시작시간,종료시간*/
+    const startEndTime = formatStartEndTime(event);
+    /*모양,위치*/
     const width = calcWidth(event);
-    const shape = getWeekItemShape(start, end);
+    const position = calcPosition(event, weekStart, weekEnd);
+    const shape = getWeekItemShape(position[0], position[1]);
     return (
-        <WeekEventBox className={"week-event"} left={start} width={width} shape={shape}>
-            {event.eventNm}
-        </WeekEventBox>
+        <WeekItemPosition left={position[0]} width={width} isEvent={true}>
+             {shape[0] && <div className="week-item-start-time">{startEndTime[0]}</div> }
+             {shape[1] && <div className="week-item-end-time">{startEndTime[1]}</div> }
+            <WeekItemPolygon className={className ?? ""} shape={shape} showBorder={true}>
+                {event.eventNm}
+            </WeekItemPolygon>
+        </WeekItemPosition>
     );
 }
 
