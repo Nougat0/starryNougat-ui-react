@@ -1,5 +1,5 @@
 import "./Day.css"
-import { getFullTime } from "../../modules/CalendarFunction";
+import { formatStartEndTime, getFullTime } from "../../modules/CalendarFunction";
 import BattleImages from "./BattleImages";
 
 const MegaGroundon = "/resource/image/Pokemon/Mega_Groundon.png";
@@ -40,13 +40,8 @@ const Day = (props) => {
             <div className="cal-day-body flex-container">
                 {Boolean(dayEventList) && dayEventList.length > 0 && dayEventList.map((dayEvent, index) => {
                     let duration = "18:00~19:00"
-
-                    const start = new Date(dayEvent.event.startDt);
-                    const end = new Date(dayEvent.event.endDt);
-                    let startTime = `${getFullTime(start.getHours())}:${getFullTime(start.getMinutes())}`
-                    /*자정에 끝나는 이벤트는 종료시각 23:59로 표시해주기*/
-                    let endTime = end.getHours() === 0 && end.getMinutes() === 0 ? "23:59" : `${getFullTime(end.getHours())}:${getFullTime(end.getMinutes())}`
-                    duration = `${startTime}~${endTime}`
+                    const startEndTime = formatStartEndTime(dayEvent.event);
+                    duration = `${startEndTime[0]}~${startEndTime[1]}`
 
                     const dayEventPokemonList = dayEvent?.pokemonList;
                     const dayEventBonusList = dayEvent?.bonusList;
