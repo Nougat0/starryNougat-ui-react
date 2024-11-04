@@ -11,6 +11,7 @@ const WeekItemPolygon = styled('div')(({shape, showBorder}) => {
             ${shape[0] ? `calc(${height}/2) 100%, 0 50%, calc(${height}/2) 0` : "0 100%, 0 0"},
             ${shape[1] ? `calc(100% - calc(${height}/2)) 0, 100% 50%, calc(100% - calc(${height}/2)) 100%` : "100% 0, 100% 100%"}
         )`, //앞부분, 뒷부분 나눠서 polygon으로 구현
+        height: height,
         
         /*기타 CSS 요소들*/
         ...(showBorder && { borderBottom: "0.1vw solid rgb(0,0,0,0.5)", borderTop: "0.1vw solid rgb(0,0,0,0.5)" }),

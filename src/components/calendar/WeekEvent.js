@@ -14,9 +14,7 @@ const WeekEvent = ({event, weekStart, className}) => {
         <WeekItemPosition left={position[0]} width={width} isEvent={true}>
             {shape[0] && <div className="week-item-start-time">{`${startEndTime[0]}~`}</div> }
             {shape[1] && <div className="week-item-end-time">{`~${startEndTime[1]}`}</div> }
-            <WeekItemPolygon className={className ?? ""} shape={shape} showBorder={true}>
-                {event.eventNm}
-            </WeekItemPolygon>
+            <WeekItemPolygon className={className ?? ""} shape={shape} showBorder={true} />
         </WeekItemPosition>
     );
 }

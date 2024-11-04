@@ -14,9 +14,7 @@ const WeekRaid = ({raid, weekStart, isMega, className}) => {
         <WeekItemPosition left={position[0]} width={width}>
             {shape[0] && <div className="week-item-start-time">{`${startEndTime[0]}~`}</div> }
             {shape[1] && <div className="week-item-end-time">{`~${startEndTime[1]}`}</div> }
-            <WeekItemPolygon className={className ?? ""} left={position[0]} width={width} shape={shape} showBorder={true}>
-                {isMega ? `[메가레이드:${raidDetails[0].pokemonNm}]` : raidDetails.map((detail) => detail.pokemonNm)}
-            </WeekItemPolygon>
+            <WeekItemPolygon className={className ?? ""} left={position[0]} width={width} shape={shape} showBorder={true} />
         </WeekItemPosition>
     )
 }
