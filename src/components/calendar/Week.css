@@ -5,6 +5,9 @@
     /*incident의 높이 변수로 지정*/
     --week-item-height: 2.0vw; 
     --week-item-margin-bottom: 0.3vw;
+    /*내부 컨텐츠 여백*/
+    --week-item-padding-horizontal: 1vw;
+    
     /*세로정렬*/
     flex-direction: column; 
     /*td 요소들과의 충돌 제거*/
@@ -40,4 +43,58 @@
 }
 .week-item-end-time {
     right: 1vw;
+}
+
+/***************************************
+    week-item 설정
+***************************************/
+.week-item-title {
+    /*flex 속성*/
+    align-items: center;
+    margin: 0 var(--week-item-padding-horizontal);
+    /*글자 속성*/
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.week-item-title > img {
+    height: 1.5vw;
+    filter: brightness(0%);
+}
+.week-item-title > * {
+    flex: 0 0 auto;
+    margin: 0 0.2vw;
+}
+.week-item-content.flex-container > div {
+    flex: 0 0 auto;
+}
+.week-item.flex-container > div {
+    flex: 0 0 auto;
+}
+
+.week-item-pokemon { /*포켓몬 이미지 박스*/
+    width: 5.7vw;
+    margin: 0 0.2vw; /*포켓몬 간 간격*/
+    /*이미지 위치 조정(위로 살짝 띄우기)*/
+    position: relative;
+    bottom: 0.25vw;
+}
+.week-item-pokemon img { /*이미지 공통사항*/
+    position: absolute;
+    left:0;
+    bottom:0;
+}
+.week-item-pokemon img:nth-child(1) { /*[1] 포켓몬 이미지*/
+    width: 5vw;
+}
+.week-item-pokemon img:nth-child(2) { /*[2] 등장 구분기호*/
+    height: 1.5vw;
+    filter: brightness(0%) drop-shadow(0px 0px 0.1vw rgba(0, 0, 0, 0.5)); /*다크테마 시 변경*/
+}
+.week-item-pokemon img:nth-child(3) { /*[3] 이로치 표시*/
+    width: 1.5vw;
+    filter: brightness(0%) drop-shadow(0px 0px 2px rgba(0,0,0,0.5)); /*다크테마 시 변경*/
+    /*이미지 위치 조정(오른쪽 위)*/
+    bottom: 3.2vw;
+    left: 3.5vw;
 }

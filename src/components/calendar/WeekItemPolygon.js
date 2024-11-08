@@ -17,11 +17,6 @@ const WeekItemPolygon = styled('div')(({shape, showBorder}) => {
         ...(showBorder && { borderBottom: "0.1vw solid rgb(0,0,0,0.5)", borderTop: "0.1vw solid rgb(0,0,0,0.5)" }),
         opacity: "70%",
         fontSize: "1vw",
-        
-        /*글자 속성*/
-        whiteSpace: "nowrap",
-        overflow: "hidden",
-        textOverflow: "ellipsis",
 
         /*내부 여백 지정*/
         paddingLeft: "1vw", //컨텐츠 시작점 지정

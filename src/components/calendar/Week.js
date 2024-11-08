@@ -21,19 +21,19 @@ const Week = ({week, weekEventList, weekRaidList}) => {
             {/*이벤트 정보*/}
             {weekEvent.length > 0 &&
                 weekEvent.toReversed().map((oneEvent, index) => 
-                    <WeekEvent key={index} className={"week-event"} event={oneEvent.event} weekStart={week[0]}/>
+                    <WeekEvent key={index} className={"week-event"} event={oneEvent.event} pokemonList={oneEvent.pokemonList} weekStart={week[0]}/>
                 )}
             {/*레이드 정보*/}
-            {legendRaids.length > 0 && 
-                <div className="week-raid legend-raid">
-                    {legendRaids.map((raid, index) => 
-                        <WeekRaid key={index} className={"week-raid-box"} raid={raid} weekStart={week[0]} isMega={false}/>
-                    )}
-                </div> }
             {megaRaids.length > 0 &&
                 <div className="week-raid mega-raid">
                     {megaRaids.map((raid, index) => 
-                        <WeekRaid key={index} className={"week-raid-box"} raid={raid} weekStart={week[0]} isMega={true}/>
+                        <WeekRaid key={index} className={"week-raid-box"} raid={raid} pokemonList={raid.raidDetailList} weekStart={week[0]} isMega={true}/>
+                    )}
+                </div> }
+            {legendRaids.length > 0 && 
+                <div className="week-raid legend-raid">
+                    {legendRaids.map((raid, index) => 
+                        <WeekRaid key={index} className={"week-raid-box"} raid={raid} pokemonList={raid.raidDetailList} weekStart={week[0]} isMega={false}/>
                     )}
                 </div> }
         </div>

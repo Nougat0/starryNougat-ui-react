@@ -1,10 +1,11 @@
 import "./Day.css"
 import { formatStartEndTime, getFullTime } from "../../modules/CalendarFunction";
 import BattleImages from "./BattleImages";
+import Icons from "./Icons";
 
 const MegaGroundon = "/resource/image/Pokemon/Mega_Groundon.png";
 const Tyranitar = "/resource/image/Pokemon/Tyranitar.png";
-const Shiny = "/resource/icons/shiny.png";
+const Shiny = Icons["SHINY"];
 
 const Day = (props) => {
     const day = props.day; //new Date() 날짜 객체
@@ -26,7 +27,6 @@ const Day = (props) => {
                 <div className="cal-day-battle-info flex-container">
                     {battleList.map((battle, index) => {
                         const url = battle.event.url.substr(11).replace(".png","");
-                        console.log(BattleImages[url]);
                         // const Component = BattleImages[url];
                         // return <Component key={index} />
                         return <img 
@@ -56,7 +56,7 @@ const Day = (props) => {
                                     <div className="cal-day-event-pokemon">
                                         <img src={dayEventPokemonList[0]?.pokemonURL ?? Tyranitar}/>
                                         {(dayEventPokemonList[0]?.shinyYn === 'Y') && //일단은 연관된 첫번째 포켓몬만 가져오기
-                                            <img src={Shiny} />
+                                            <img src={Shiny.src} alt={Shiny.alt}/>
                                         }
                                     </div>       
                                 </div>

@@ -1,8 +1,9 @@
 import { addDays, calcPosition, calcWidth, formatStartEndTime, getFullTime, getWeekItemShape } from "../../modules/CalendarFunction";
 import WeekItemPosition from "./WeekItemPosition";
 import WeekItemPolygon from "./WeekItemPolygon";
+import WeekItemContent from "./WeekItemContent";
 
-const WeekEvent = ({event, weekStart, className}) => {
+const WeekEvent = ({event, pokemonList, weekStart, className}) => {
     const weekEnd = addDays(weekStart, 7);
     /*시작시간,종료시간*/
     const startEndTime = formatStartEndTime(event);
@@ -15,6 +16,7 @@ const WeekEvent = ({event, weekStart, className}) => {
             {shape[0] && <div className="week-item-start-time">{`${startEndTime[0]}~`}</div> }
             {shape[1] && <div className="week-item-end-time">{`~${startEndTime[1]}`}</div> }
             <WeekItemPolygon className={className ?? ""} shape={shape} showBorder={true} />
+            <WeekItemContent eventNm={event.eventNm} shape={shape} pokemonList={pokemonList}/>
         </WeekItemPosition>
     );
 }

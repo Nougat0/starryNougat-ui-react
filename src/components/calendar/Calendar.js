@@ -4,6 +4,7 @@ import axiosInstance from "../axios/axiosInstance";
 import Week from "./Week";
 import Day from "./Day";
 import { minusDays, sameDay } from "../../modules/CalendarFunction";
+import Icons from "./Icons";
 
 const pogoLogo = "/resource/image/pogo-image.png";
 const seasonImageSample = "/resource/image/pokemongo-season-adventures-abound.png";
@@ -203,7 +204,20 @@ const Calendar = (props) => {
                     </tbody>
                 </table> */}
             </div>
-            <div className="cal-footer">Item 설명란</div>
+            <div className="cal-footer flex-container">
+                <div>아이템 설명</div>
+                <div className="items flex-container">
+                    {Object.keys(Icons).map((iconKey, index) => {
+                        const icon = Icons[`${iconKey}`];
+                        return (
+                            <div key={index} className="item flex-container">
+                                <img src={icon.src} alt={icon.alt}/>
+                                <div className="item-name">{icon.alt}</div>
+                            </div>
+                        )}
+                    )}
+                </div>
+            </div>
         </div>
     )
 }
