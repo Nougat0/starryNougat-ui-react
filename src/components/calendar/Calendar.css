@@ -38,7 +38,7 @@
     width: 60%;
     flex-grow: 0;
     /*title 배경설정*/
-    background: linear-gradient(to right, aquamarine 20%, white 80%);
+    background: linear-gradient(to right, aquamarine 20%, rgba(255,255,255,0) 80%);
     height: 6vw;
     border-radius: 6vw; /*0 50% / 0 100%; 높이만큼 설정하고 싶음*/
     /*내부 아이템 정렬*/
