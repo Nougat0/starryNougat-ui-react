@@ -7,7 +7,8 @@ html, body {
     /*footer 화면 최하단에 위치*/
     height: 100%;
     /*전체 폰트 지정*/
-    font-family: "Wanted Sans" /*생각보다 2가 너무 구부정해서 좀 고민됨...*/
+    font-family: "NanumSquareNeo";
+    font-weight: 600;
 }
 
 /*flex 설정 주기*/
