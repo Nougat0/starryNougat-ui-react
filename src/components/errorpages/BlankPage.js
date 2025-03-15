@@ -1,7 +1,7 @@
 import React from "react";
 
 const BlankPage = () => {
-    return <>빈 페이지입니다</>;
+    return <div class="page-conatiner">빈 페이지입니다</div>;
 };
 
 export default BlankPage;

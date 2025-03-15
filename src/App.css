@@ -67,6 +67,12 @@ html, body {
     color: #61dafb;
 }
 
+/*전체 페이지 공통 
+    - header 와 footer 제외한 높이 100% 차지*/
+.page-container {
+    height: 100%;
+}
+
 /*
     반응형 웹사이트 만들기
 */

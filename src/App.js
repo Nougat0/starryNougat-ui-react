@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router";
 import BlankPage from "./components/errorpages/BlankPage";
 import { BrowserRouter } from "react-router-dom";
 import CalendarPage from "./components/pages/CalendarPage";
-import CalendarPageMana from "./components/pages/CalendarPageMana";
+import CalendarManaPage from "./components/pages/CalendarManaPage";
 import "../src/assets/fonts/NanumSquareNeo.css";
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
                     <Route path="/calendar" element={<CalendarPage />} />
                     <Route
                         path="/calendarMana"
-                        element={<CalendarPageMana />}
+                        element={<CalendarManaPage />}
                     />
                     <Route path="*" element={<BlankPage />} />
                 </Routes>
