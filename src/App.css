@@ -35,11 +35,15 @@ html, body {
 
 .App {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
 }
 
 .App-header { /*전체 레이아웃 Header*/
     background-color: cornflowerblue;
-    height: 8vh;
+    height: 80px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -49,7 +53,7 @@ html, body {
 }
 
 .App-footer { /*전체 레이아웃 Footer*/
-    height: 8vh;
+    height: 80px;
     width: 100%;
     display: flex;
     flex-direction: column;
