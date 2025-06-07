@@ -1,0 +1,52 @@
+.page-container {
+    position: relative;
+}
+.navbar {
+    justify-content: space-between;
+    position: absolute;
+    top: 11.5vw;
+    background-color: rgb(255, 240, 78);
+    width: 7.5vw; /*왜 이걸로 간격이 정해지지??*/
+}
+.navbar.lt {
+    flex-direction: row-reverse;
+    left: 1vw;
+}
+.navbar.gt {
+    right: 1vw;
+}
+.nav-button:hover {
+    cursor: pointer;
+}
+.nav-button img {
+    height: 3vw;
+    opacity: 0.7;
+    filter: brightness(80%);
+}
+
+/*
+    반응형 웹사이트 만들기
+    flex 계층은 아래와 같다 (flex-container > flex-item)
+    [1] cal-header > cal-title + cal-info
+    [2] cal-title > cal-pogo-image + cal-yymm + cal-season-image
+        cal-info > cal-season-info + cal-calendar-info
+*/
+@media screen and (max-width: 767px) { /*모바일 설정 : 480px ~ 767px*/
+    .navbar {
+        flex-direction: column;
+        justify-content: space-between;
+        width: 4vw;
+        top: 10vw;
+    }
+    .navbar.lt {
+        flex-direction: column;
+    }
+    .nav-button:first-child {
+        margin-bottom: 4.5vw;
+    }
+    .nav-button img {
+        height: 5vw;
+        opacity: 0.7;
+        filter: brightness(80%);
+    }
+}

@@ -1,0 +1,52 @@
+/*
+라이센스
+네이버 나눔스퀘어 네오는 무료로 배포되는 오픈라이센스 폰트로
+개인 및 기업 사용자 모두가 영리적, 비영리적 목적으로 자유롭게 사용할 수 있습니다.
+모든 나눔스퀘어 서체의 지식재산권은 (주)네이버에 있으며, 폰트 파일은 유료로 판매할 수 없습니다.
+https://campaign.naver.com/nanumsquare_neo
+*/
+@font-face {
+    font-family: "NanumSquareNeo";
+    font-style: normal;
+    font-display: swap;
+    font-weight: 1000;
+    src: local("NanumSquareNeo Heavy"), 
+    url("/public/resource/fonts/NanumSquareNeo/NanumSquareNeoTTF-eHv.woff2") format("woff2"), 
+    url("/public/resource/fonts/NanumSquareNeo/NanumSquareNeo-eHv.ttf") format("ttf");
+}
+@font-face {
+    font-family: "NanumSquareNeo";
+    font-style: normal;
+    font-display: swap;
+    font-weight: 800;
+    src: local("NanumSquareNeo ExtraBold"), 
+    url("/public/resource/fonts/NanumSquareNeo/NanumSquareNeoTTF-dEb.woff2") format("woff2"), 
+    url("/public/resource/fonts/NanumSquareNeo/NanumSquareNeo-dEb.ttf") format("ttf");
+}
+@font-face {
+    font-family: "NanumSquareNeo";
+    font-style: normal;
+    font-display: swap;
+    font-weight: 600;
+    src: local("NanumSquareNeo Bold"), 
+    url("/public/resource/fonts/NanumSquareNeo/NanumSquareNeoTTF-cBd.woff2") format("woff2"), 
+    url("/public/resource/fonts/NanumSquareNeo/NanumSquareNeo-cBd.ttf") format("ttf");
+}
+@font-face {
+    font-family: "NanumSquareNeo";
+    font-style: normal;
+    font-display: swap;
+    font-weight: 500;
+    src: local("NanumSquareNeo Regular"), 
+    url("/public/resource/fonts/NanumSquareNeo/NanumSquareNeoTTF-bRg.woff2") format("woff2"), 
+    url("/public/resource/fonts/NanumSquareNeo/NanumSquareNeo-bRg.ttf") format("ttf");
+}
+@font-face {
+    font-family: "NanumSquareNeo";
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: local("NanumSquareNeo Light"), 
+    url("/public/resource/fonts/NanumSquareNeo/NanumSquareNeoTTF-aLt.woff2") format("woff2"), 
+    url("/public/resource/fonts/NanumSquareNeo/NanumSquareNeo-aLt.ttf") format("ttf");
+}
